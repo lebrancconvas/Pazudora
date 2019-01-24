@@ -1,4 +1,5 @@
 #include<stdio.h>
+#include<stdlib.h>
 #include<conio.h>
 
 #define FIELD_WIDTH 8
@@ -7,16 +8,24 @@
 int cursorX , cursorY;
 
 int main() {
-    for(int y = 0; y < FIELD_HEIGHT; y++) {
-        for(int x = 0; x < FIELD_WIDTH; x++) {
-            if(x == cursorX && y == cursorY) {
-                printf("*");
+    while(1) {
+        system("cls");
+        for(int y = 0; y < FIELD_HEIGHT; y++) {
+            for(int x = 0; x < FIELD_WIDTH; x++) {
+                if(x == cursorX && y == cursorY) {
+                    printf("*");
+                }
+                else {
+                    printf(".");
+                }
             }
-            else {
-                printf(".");
-            }
+            printf("\n");
         }
-        printf("\n");
+        switch(_getch()) {
+            case 'w': cursorY--; break;
+            case 'a': cursorX--; break;
+            case 's': cursorY++; break;
+            case 'd': cursorX++; break;
+        }
     }
-    _getch();
 }
